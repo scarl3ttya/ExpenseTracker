@@ -2,9 +2,9 @@
 /*
 * Vars & Const
 */
-const budget_form = document.getElementById('budget_form');
+//const budget_form = document.getElementById('budget_form');
 const budget_submit = document.getElementById('budget_submit');
-const budget_amount = document.getElementById('budget_amount');
+//const budget_amount = document.getElementById('budget_amount');
 
 /*
 * Event Listeners
@@ -12,7 +12,7 @@ const budget_amount = document.getElementById('budget_amount');
 
 budget_submit.addEventListener('click', function(e){
     e.preventDefault();
-    //const budget_amount = document.getElementById('budget_amount');
+    const budget_amount = document.getElementById('budget_amount');
     const budget_periodic = document.querySelector('input[name="budget_periodic"]:checked');
     const postData = new FormData();
     postData.append('budget_amount',budget_amount.value)
@@ -26,7 +26,7 @@ budget_submit.addEventListener('click', function(e){
 */
 
 function initial_budget_info(postData=null){
-    
+    const budget_form = document.getElementById('budget_form');
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     const request = new Request(
         budget_form.action,
