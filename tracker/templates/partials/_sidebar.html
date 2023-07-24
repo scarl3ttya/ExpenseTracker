@@ -15,7 +15,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href='{% url "tracker:index" %}'>
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -25,8 +25,41 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        Basic Settings
     </div>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Settings</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Settings:</h6>
+                <a class="collapse-item" href="#">General</a>                
+                <a class="collapse-item" href="#">Graphs</a>
+                <a class="collapse-item" href="#">Charts</a>
+                <a class="collapse-item" href="#">Colors Scheme</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBudget"
+            aria-expanded="true" aria-controls="collapseBudget">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Budget</span>
+        </a>
+        <div id="collapseBudget" class="collapse" aria-labelledby="headingBudget"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Set Budget</h6>
+                {% include 'includes/budget_form.html' %}
+            </div>
+        </div>
+    </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -44,31 +77,14 @@
         </div>
     </li>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Settings</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Settings:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
-            </div>
-        </div>
-    </li>
+    
 
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Addons
+        Shortcuts
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -80,14 +96,14 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
+                <h6 class="collapse-header">User:</h6>
                 <a class="collapse-item" href="login.html">Login</a>
                 <a class="collapse-item" href="register.html">Register</a>
                 <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                 <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
+                <h6 class="collapse-header">Admin:</h6>
+                <a class="collapse-item" href='{% url "admin:index" %}'>Admin Page</a>
+                
             </div>
         </div>
     </li>
@@ -103,7 +119,7 @@
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Graphs</span></a>
     </li>
 
     <!-- Divider -->
@@ -115,11 +131,13 @@
     </div>
 
     <!-- Sidebar Message -->
+    <!--
     <div class="sidebar-card d-none d-lg-flex">
         <img class="sidebar-card-illustration mb-2" src='{% static "img/undraw_rocket.svg" %}' alt="...">
-        <p class="text-center mb-2"><strong>Shortcut: </strong> quick update!</p>
+        <p class="text-center mb-2"><strong>Quick </strong> update!</p>
         <a class="btn btn-success btn-sm" href="">Add Expense</a>
     </div>
+    -->
 
 </ul>
 <!-- End of Sidebar -->
