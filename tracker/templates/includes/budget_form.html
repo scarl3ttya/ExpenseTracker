@@ -1,0 +1,22 @@
+<form action='{% url "tracker:post_budget" %}' method="post" id="budget_form">
+    <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" id="budget_amount" name="budget_amount" max="999999" required>
+        <span class="input-group-text">.00</span>
+    </div>
+    <div class="form-check mx-2">
+        <input class="form-check-input" type="radio" id="budget_weekly" name="budget_periodic" value=0 checked>
+        <label class="form-check-label" for="budget_weekly">Weekly</label>
+    <hr>
+        <input class="form-check-input" type="radio" id="budget_monthly" name="budget_periodic" value=1 >
+        <label class="form-check-label" for="budget_monthly">Monthly</label>
+    <hr>
+        <input class="form-check-input" type="radio" id="budget_annually" name="budget_periodic" value=2 >
+        <label class="form-check-label" for="budget_annually">Annually</label>
+    </div>
+    {% csrf_token %}
+    <br>
+    <div class="col-auto">        
+        <button type="submit" class="btn btn-primary form-control" id="budget_submit">Save</button>
+    </div>
+</form>

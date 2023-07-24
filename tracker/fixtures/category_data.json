@@ -1,0 +1,111 @@
+[
+    {
+        "model": "tracker.Category",
+        "pk": 1,
+        "fields": {
+            "title": "Housing",
+            "slug": "housing",
+            "help_text": "This includes everything from rent or mortgage payments to property taxes, HOA dues, and home maintenance costs."            
+        }
+    },
+    {
+        "model": "tracker.Category",
+        "pk": 2,
+        "fields": {
+            "title": "Transportation",
+            "slug": "transportation",
+            "help_text": "Typically, this budget category includes car payments, registration and DMV fees, gas, maintenance, parking, tolls, ridesharing costs, and public transit."               
+        }
+    },
+    {
+        "model": "tracker.Category",
+        "pk": 3,
+        "fields": {
+            "title": "Food",
+            "slug": "food",
+            "help_text": "Include grocery shopping and dining out in this category (e.g., restaurant meals, work lunches, food delivery, etc.)"            
+        }
+    },
+    {
+        "model": "tracker.Category",
+        "pk": 4,
+        "fields": {
+            "title": "Utilities",
+            "slug": "utilities",
+            "help_text": "Generally include your gas, electricity, water, and sewage bills. Households can also factor in their “connectivity” expenses, like your cell phone bill, cable or streaming services, and internet expenses."           
+        }
+    },
+    {
+        "model": "tracker.Category",
+        "pk": 5,
+        "fields": {
+            "title": "Insurance",
+            "slug": "insurance",
+            "help_text": "Many budgeters will categorize insurance with what exactly they’re insuring. Health insurance, for example, would fall under “Healthcare.” The insurance on your vehicle would fall under “Transportation,” and both are totally valid — do whatever helps you feel most organized"            
+        }
+    },
+    {
+        "model": "tracker.Category",
+        "pk": 6,
+        "fields": {
+            "title": "Medical & Healthcare",
+            "slug": "medical-healthcare",
+            "help_text": "includes anything you might spend on healthcare, such as: out-of-pocket costs for primary care, specialty care (dermatologists, psychologists, etc.), dental care, urgent care, prescriptions and OTC medications, supplements and vitamins, medical devices and supplies"
+        }
+    },
+    {
+        "model": "tracker.Category",
+        "pk": 7,
+        "fields": {
+            "title": "Saving & Investing",
+            "slug": "saving-investing",
+            "help_text": "Every household should have an emergency fund earmarked for unexpected expenses, as well as a retirement account such as a 401(k) or IRA."            
+        }
+    },
+    {
+        "model": "tracker.Category",
+        "pk": 8,
+        "fields": {
+            "title": "Debt Payment",
+            "slug": "debt-payment",
+            "help_text": "any high-interest debt you’re carrying, such as credit card bills, personal loans, or student loans."             
+        }
+    },
+    {
+        "model": "tracker.Category",
+        "pk": 9,
+        "fields": {
+            "title": "Education",
+            "slug": "education",
+            "help_text": "Tuition, book fees, room and board or other living expenses."            
+        }
+    },
+    {
+        "model": "tracker.Category",
+        "pk": 10,
+        "fields": {
+            "title": "Personal Spending",
+            "slug": "personal-spending",
+            "help_text": "Catch-all for anything that could be considered a personal care or “lifestyle” expense. (gym memberships, clothes and shoes, home decor and furnishings, gifts)"            
+        }
+    },
+    {
+        "model": "tracker.Category",
+        "pk": 11,
+        "fields": {
+            "title": "Recreation & Entertainment",
+            "slug": "recreation-entertainment",
+            "help_text": "For most of us, carving out time for fun (and the money to afford it) is essential to maintaining a healthy work-life balance."            
+        }
+    },
+    {
+        "model": "tracker.Category",
+        "pk": 12,
+        "fields": {
+            "title": "Miscellaneous & Other",
+            "slug": "miscellaneous-other",
+            "help_text": "Reserved for anything that isn’t already covered in your basic budget categories."             
+        }
+    }
+    
+]
