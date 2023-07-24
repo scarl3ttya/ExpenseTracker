@@ -1,2 +1,4 @@
 # ExpenseTracker
-An expense-tracking web app for the book distribution company
+An expense-tracking web app 
+
+## Use the requirements.txt file
