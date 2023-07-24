@@ -35,6 +35,7 @@ def post_budget(request):
     
         budget.save() 
         
-    else:        
-        return JsonResponse(form.errors, safe=False, status=200)
+    #else:        
+        #return JsonResponse(form.errors, safe=False, status=200)
+    
     return HttpResponse(serializers.serialize("json", [budget]), content_type='application/json')
