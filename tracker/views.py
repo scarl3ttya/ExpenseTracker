@@ -3,7 +3,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.core import serializers
-from .models import Budget
+from django.db.models import Avg, Count
+from datetime import datetime
+from .models import Budget, Expense
 from .forms import BudgetForm
 
 def index(request):
@@ -39,3 +41,12 @@ def post_budget(request):
         #return JsonResponse(form.errors, safe=False, status=200)
     
     return HttpResponse(serializers.serialize("json", [budget]), content_type='application/json')
+
+@require_POST
+def post_expense(request):
+    current_year = datetime.now().year
+    expense = Expense.objects.filter(user=request.user).filter(date__year=current_year)
+    if expense.exists() and expense.count():
+        return HttpResponse(serializers.serialize("json", list(expense,)), content_type='application/json')
+    else:
+        return HttpResponse('{"message":"Empty Object"}', content_type='application/json')    
