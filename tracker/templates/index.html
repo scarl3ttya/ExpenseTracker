@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load tracker_tags %}
 {% block title %}Dashboard | Expense Tracker{% endblock %}
 {% block js %} <script src='{% static "js/index.js" %}'></script> {% endblock %}
 
@@ -60,8 +61,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Weekly Budget</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="weekly_budget_div">$0</div>
-                                            <hr><div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Weekly Expenses</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$745</div>
+                                            <hr><div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id="weekly_expense_title_div">Weekly Expenses <br>({% days_of_week %})</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="weekly_expense_div">{% weekly_expenses user %} </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -79,8 +80,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Monthly Budget</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="monthly_budget_div">$0</div> 
-                                            <hr><div class="text-xs font-weight-bold text-success text-uppercase mb-1">Monthly Expenses</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$2,980</div>                                        
+                                            <hr><div class="text-xs font-weight-bold text-success text-uppercase mb-1" id="monthly_expense_title_div">Monthly Expenses <br>({% now 'F' %})</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="monthly_expense_div">{% monthly_expenses user %} </div>                                        
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -98,8 +99,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Annual Budget</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="annual_budget_div">$0</div>
-                                            <hr><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Annual Expenses</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$35,760</div>
+                                            <hr><div class="text-xs font-weight-bold text-info text-uppercase mb-1" id="annual_expense_title_div">Annual Expenses <br>({% now 'Y' %})</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="annual_expense_div">$0</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

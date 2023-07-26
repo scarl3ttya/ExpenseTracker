@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import index, post_budget
+from . import views
 
 app_name = 'tracker'
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('budget/', post_budget, name='post_budget'),
+    path('', views.index, name='index'),
+    path('budget/', views.post_budget, name='post_budget'),
+    path('expense/', views.post_expense, name='post_expense'),
         
 ]
