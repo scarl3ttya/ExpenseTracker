@@ -44,13 +44,13 @@ function fetch_budget_info(postData=null){
     return;
 }
 
-fetch_budget_info();
+//fetch_budget_info();
 
 function set_budget_info(data){
     const annual_budget_div = document.getElementById("annual_budget_div")
     const monthly_budget_div = document.getElementById("monthly_budget_div")
     const weekly_budget_div = document.getElementById("weekly_budget_div")
-
+    console.log(data)
     annual_budget_div.innerHTML = formatMoney(data[0].fields.annual)
     monthly_budget_div.innerHTML = formatMoney(data[0].fields.month)
     weekly_budget_div.innerHTML = formatMoney(data[0].fields.week)
@@ -76,7 +76,7 @@ function fetch_expense_info(postData=null){
     return;
 }
 
-fetch_expense_info();
+//fetch_expense_info();
 
 function set_expense_info(data){
     const annual_expense_div = document.getElementById("annual_expense_div")

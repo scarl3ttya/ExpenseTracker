@@ -14,29 +14,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-dark topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+            <div id="content">               
 
                     {% include 'partials/_topnav.html' %}
 
@@ -46,69 +24,22 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard | Expense Tracker</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><iclass="fas fa-download fa-sm text-white-50"></i> ADD EXPENSE</a>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><iclass="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Weekly Budget</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="weekly_budget_div">$0</div>
-                                            <hr><div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id="weekly_expense_title_div">Weekly Expenses <br>({% days_of_week %})</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="weekly_expense_div">{% weekly_expenses user %} </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Earnings (Weekly) Card Example -->
+                        {% show_weekly_expenses user %}
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Monthly Budget</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="monthly_budget_div">$0</div> 
-                                            <hr><div class="text-xs font-weight-bold text-success text-uppercase mb-1" id="monthly_expense_title_div">Monthly Expenses <br>({% now 'F' %})</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="monthly_expense_div">{% monthly_expenses user %} </div>                                        
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Earnings (Monthly) Card  -->
+                        {% show_monthly_expenses user %}
+                        
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Annual Budget</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="annual_budget_div">$0</div>
-                                            <hr><div class="text-xs font-weight-bold text-info text-uppercase mb-1" id="annual_expense_title_div">Annual Expenses <br>({% now 'Y' %})</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="annual_expense_div">$0</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Earnings (Annual) Card Example -->
+                        {% show_annual_expenses user %}
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
