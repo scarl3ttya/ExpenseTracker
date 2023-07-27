@@ -22,28 +22,56 @@ def days_of_week():
     first_day_of_week, last_day_of_week = get_week()  
     return f'{first_day_of_week.strftime("%m/%d/%y")} - {last_day_of_week.strftime("%m/%d/%y")}'
 
-@register.simple_tag
-def monthly_expenses(user):
+@register.inclusion_tag('includes/expense_widget.html')
+def show_weekly_expenses(user):
+    first_day_of_week, last_day_of_week = get_week()
+    expenses_for_week = Expense.objects.filter(user=user, date__range=[first_day_of_week.strftime("%Y-%m-%d"),
+                            last_day_of_week.strftime("%Y-%m-%d")])
+    budget, _ = Budget.objects.get_or_create(user=user)
+    _budget= '{:0,.2f}'.format(budget.week)
+    avg_expenses = expenses_for_week.aggregate(_avg = Avg('amount'))
+    sum_expenses = expenses_for_week.aggregate(_sum = Sum('amount'))
+    count_expenses =  expenses_for_week.aggregate(_count = Count('amount'))  
+    expenses = {'budget_title':'Weekly Budget', 'expense_title':'Weekly Expenses',
+                 'color':'success', 'budget':_budget, 'span':days_of_week(), 
+                 'avg':f'{avg_expenses["_avg"]:.2f}', 'sum':f'{sum_expenses["_sum"]:.2f}',
+                'count':count_expenses["_count"], 'expense_name':'weekly_expense_div', 'budget_name':'weekly_budget_div' }
+    
+    return expenses
+
+@register.inclusion_tag('includes/expense_widget.html')
+def show_monthly_expenses(user):
     _month = today.month
     expenses_for_month = Expense.objects.filter(user=user,date__month=_month)
+    budget, _ = Budget.objects.get_or_create(user=user)
+    _budget= '{:0,.2f}'.format(budget.month)
     avg_expenses = expenses_for_month.aggregate(_avg = Avg('amount'))
     sum_expenses = expenses_for_month.aggregate(_sum = Sum('amount'))
     count_expenses =  expenses_for_month.aggregate(_count = Count('amount'))
-    r = f'${sum_expenses["_sum"]:.2f}' +'<sup> total</sup><br>'\
-        +f'${avg_expenses["_avg"]:.2f}'+'<sup> avg</sup><br><small>'+f'{count_expenses["_count"]}'+' transactions</small>'
-    return mark_safe(r)
+    
+    expenses = {'budget_title':'Monthly Budget', 'expense_title':'Monthly Expenses',
+                 'color':'primary', 'span':today.strftime("%B \'%y"), 'budget':_budget,
+                 'avg':f'{avg_expenses["_avg"]:.2f}', 'sum':f'{sum_expenses["_sum"]:.2f}',
+                'count':count_expenses["_count"], 'expense_name':'monthly_expense_div', 'budget_name':'monthly_budget_div' }
+    
+    return expenses
 
-@register.simple_tag
-def weekly_expenses(user):
-    first_day_of_week, last_day_of_week = get_week()
-    expenses_for_week = Expense.objects.filter(user=user, date__range=[first_day_of_week.strftime("%Y-%m-%d"), last_day_of_week.strftime("%Y-%m-%d")])
-    avg_expenses = expenses_for_week.aggregate(_avg = Avg('amount'))
-    sum_expenses = expenses_for_week.aggregate(_sum = Sum('amount'))
-    count_expenses =  expenses_for_week.aggregate(_count = Count('amount'))    
-    r = f'${sum_expenses["_sum"]:.2f}' +'<sup> total</sup><br>'\
-        +f'${avg_expenses["_avg"]:.2f}'+'<sup> avg</sup><br><small>'+f'{count_expenses["_count"]}'+' transactions</small>'
-    return mark_safe(r)
-
-
+@register.inclusion_tag('includes/expense_widget.html')
+def show_annual_expenses(user):
+    _year = today.year
+    budget, _ = Budget.objects.get_or_create(user=user)
+    _budget= '{:0,.2f}'.format(budget.annual)
+    
+    expenses_for_year = Expense.objects.filter(user=user,date__year=_year)
+    avg_expenses = expenses_for_year.aggregate(_avg = Avg('amount'))
+    sum_expenses = expenses_for_year.aggregate(_sum = Sum('amount'))
+    count_expenses =  expenses_for_year.aggregate(_count = Count('amount'))
+    
+    expenses = {'budget_title':'Monthly Budget', 'expense_title':'Monthly Expenses',
+                'color':'primary', 'span':today.strftime("%Y"), 'budget':_budget,
+                'avg':f'{avg_expenses["_avg"]:.2f}', 'sum':f'{sum_expenses["_sum"]:.2f}',
+                'count':count_expenses["_count"], 'name':'annual_expense_div', 'expense_name':'annual_expense_div', 'budget_name':'annual_budget_div'}
+    
+    return expenses
 
 
