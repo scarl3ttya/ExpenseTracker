@@ -1,21 +1,42 @@
 <form action='{% url "tracker:post_expense" %}' method="post" id="expense_form">
-    <div class="input-group mb-3">
-        <span class="input-group-text">Title</span>
-        <input type="text" aria-label="Title" class="form-control" id="expense_title" name="expense_title">
-    </div>
-    <div class="input-group mb-3">
-        <span class="input-group-text">$</span>
-        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" id="expense_amount" name="expense_amount" max="999999" required>
-        <span class="input-group-text">.00</span>
-    </div>
-    <div class="input-group mb-3">
-        <label class="input-group-text" for="expense_category">Category</label>
-        <select class="form-select" id="expense_category" name="expense_category">
-          <option selected>Choose...</option>
-          
-        </select>
-      </div>
     
+    <div class="input-group">
+        <span class="input-group-text">Title</span>
+        <input type="text" aria-label="Expense Form Title" class="form-control" id="expense_form_title" name="expense_form_title" required>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-text">Amount $</span>
+        <input type="number" class="form-control" aria-label="Amount" step="0.01" id="expense_form_amount" name="expense_form_amount" max="999999" required>
+    </div>
+    <div class="input-group">
+        <label class="input-group-text form-control" for="expense_form_category">Category</label>
+        <select class="form-select" id="expense_form_category" name="expense_form_category">
+          <option selected>Choose...</option>
+          {% for cat in categories %}
+            <option selected>{{ cat }}</option>
+          {% endfor %}
+        </select>
+    </div>
+    <br>
+    <div class="input-group" data-provide="datepicker">
+        <span class="input-group-text">Date</span>
+        <input type="date" class="form-control" value="{% now 'Y\-m\-d' %}" id="expense_form_date" name="expense_form_date">
+    </div>
+    <br>    
+    <div class="input-group">
+        <label class="input-group-text form-control" for="expense_form_deductible">Deductible</label>
+        <select class="form-select" id="expense_form_deductible" name="expense_form_deductible">
+          <option value=0 selected="selected" selected>No</option>
+          <option value=1>Yes</option>
+        </select>
+    </div>
+    <br>
+    <div class="mx-2">
+        <label for="expense_form_comment" class="form-label mb-1">Comments</label>
+        <textarea class="form-control" id="expense_form_comment" name="expense_form_comment" rows="3"></textarea>
+    </div>
+
     {% csrf_token %}
     <br>
     <div class="col-auto">        
