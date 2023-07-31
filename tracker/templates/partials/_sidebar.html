@@ -1,4 +1,5 @@
 {% load static %}
+{% load tracker_tags %}
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -39,7 +40,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Add Expenses</h6>
-                {% include 'includes/expense_form.html' %}
+                {% get_expense_form %}
             </div>
         </div>
     </li>
@@ -78,17 +79,17 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-fw fa-cog"></i>
             <span>Settings</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Settings:</h6>
-                <a class="collapse-item" href="#">General</a>                
-                <a class="collapse-item" href="#">Graphs</a>
-                <a class="collapse-item" href="#">Charts</a>
-                <a class="collapse-item" href="#">Colors Scheme</a>
+                <a class="collapse-item" href="{% url "tracker:index" %}">General</a>                
+                <a class="collapse-item" href="{% url "tracker:index" %}">Graphs</a>
+                <a class="collapse-item" href="{% url "tracker:index" %}">Charts</a>
+                <a class="collapse-item" href="{% url "tracker:index" %}">Colors Scheme</a>
             </div>
         </div>
     </li>

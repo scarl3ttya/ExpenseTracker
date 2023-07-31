@@ -1,4 +1,4 @@
-
+{% load tracker_tags %}
 <div class="col-xl-3 col-md-6 mb-4">
     <div class="card border-left-{{ color }} shadow h-100 py-2">
         <div class="card-body">
@@ -10,8 +10,8 @@
                     <div class="h5 mb-0 font-weight-bold text-gray-800" id="{{ expense_name }}_holder">
                         <div class="h5 mb-0 font-weight-bold text-gray-800" id="{{ expense_name }}">
     
-                            ${{ sum }}<sup> total</sup><br>
-                            ${{ avg }}<sup> avg</sup><br>
+                            ${{ sum | money }}<sup> total</sup><br>
+                            ${{ avg | money }}<sup> avg</sup><br>
                             <small>{{ count }} transactions</small> 
                         
                         </div>
